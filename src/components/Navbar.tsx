@@ -81,7 +81,7 @@ export default function Navbar() {
                 </motion.div>
               ))}
               <Link
-                to="/payment"
+                to="/auth"
                 onClick={() => setOpen(false)}
                 className="mt-2 text-center px-5 py-3 rounded-lg bg-accent text-accent-foreground font-body font-semibold"
               >

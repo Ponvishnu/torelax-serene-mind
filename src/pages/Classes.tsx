@@ -126,7 +126,7 @@ export default function Classes() {
               <p className="font-body text-sm text-muted mb-1">₹1000 Cashback as Amazon Voucher</p>
               <p className="font-body text-xs text-muted mb-5">Offer valid till April 30</p>
               <Link
-                to="/payment"
+                to="/auth"
                 className="block text-center px-6 py-3 rounded-lg bg-accent text-accent-foreground font-body font-semibold animate-pulse-ring"
               >
                 Subscribe for ₹2000

@@ -17,7 +17,7 @@ export default function FloatingOfferBadge() {
           className="fixed bottom-4 right-4 z-40 max-w-xs"
         >
           <Link
-            to="/payment"
+            to="/auth"
             className="block relative bg-card rounded-xl p-4 pr-10 shadow-lg border border-accent/30 animate-amber-glow"
           >
             <button
