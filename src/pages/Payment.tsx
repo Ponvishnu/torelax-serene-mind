@@ -45,7 +45,7 @@ export default function Payment() {
   const handlePayment = async () => {
     setProcessing(true);
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return;
+    const userId = session?.user?.id || "00000000-0000-0000-0000-000000000000";
 
     // Create order
     const { data: order, error } = await supabase.from("orders").insert({
