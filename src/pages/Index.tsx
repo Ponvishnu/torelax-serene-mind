@@ -87,7 +87,7 @@ export default function Home() {
             className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link
-              to="/payment"
+              to="/auth"
               className="px-8 py-4 rounded-xl bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
             >
               Start Your Journey →
@@ -153,7 +153,7 @@ export default function Home() {
               <CountdownTimer />
             </div>
             <Link
-              to="/payment"
+              to="/auth"
               className="inline-flex px-8 py-4 rounded-xl bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
             >
               Start Your Relaxation Journey Today →
@@ -320,7 +320,7 @@ export default function Home() {
               Take 10 minutes today.<br />Transform your life.
             </h2>
             <Link
-              to="/payment"
+              to="/auth"
               className="inline-flex px-10 py-4 rounded-xl bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
             >
               Subscribe Now — ₹2000

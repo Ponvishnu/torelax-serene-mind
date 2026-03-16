@@ -175,7 +175,7 @@ export default function About() {
               Start Your 30-Day Relaxation Plan Today
             </h2>
             <Link
-              to="/payment"
+              to="/auth"
               className="inline-flex px-10 py-4 rounded-xl bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
             >
               Subscribe Now — ₹2000
