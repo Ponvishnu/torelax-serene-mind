@@ -67,7 +67,7 @@ export default function Address() {
     e.preventDefault();
     setSaving(true);
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return;
+    const userId = session?.user?.id || "00000000-0000-0000-0000-000000000000";
 
     const { data, error } = await supabase.from("addresses").insert({
       user_id: session.user.id,
