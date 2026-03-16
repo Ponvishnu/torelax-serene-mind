@@ -70,7 +70,7 @@ export default function Address() {
     const userId = session?.user?.id || "00000000-0000-0000-0000-000000000000";
 
     const { data, error } = await supabase.from("addresses").insert({
-      user_id: session.user.id,
+      user_id: userId,
       full_name: form.full_name,
       phone: form.phone,
       address_line1: form.address_line1,

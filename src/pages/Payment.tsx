@@ -49,7 +49,7 @@ export default function Payment() {
 
     // Create order
     const { data: order, error } = await supabase.from("orders").insert({
-      user_id: session.user.id,
+      user_id: userId,
       address_id: addressId!,
       amount: 2000,
       status: "completed",
