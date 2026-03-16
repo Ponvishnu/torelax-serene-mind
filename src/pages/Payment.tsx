@@ -109,7 +109,6 @@ export default function Payment() {
                     <span className="text-foreground">ToRelax Monthly Plan — 30 Days</span>
                   </div>
                   <div className="flex items-baseline gap-3">
-                    <span className="font-body text-muted line-through text-lg">₹3000</span>
                     <span className="font-display text-3xl font-bold text-foreground">₹2000</span>
                     <span className="font-body text-xs text-muted">(incl. GST)</span>
                   </div>
