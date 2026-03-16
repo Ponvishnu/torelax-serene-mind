@@ -14,7 +14,119 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      addresses: {
+        Row: {
+          address_line1: string
+          address_line2: string | null
+          city: string
+          created_at: string
+          full_name: string
+          id: string
+          is_default: boolean
+          phone: string
+          pincode: string
+          state: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          address_line1: string
+          address_line2?: string | null
+          city: string
+          created_at?: string
+          full_name: string
+          id?: string
+          is_default?: boolean
+          phone: string
+          pincode: string
+          state: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          address_line1?: string
+          address_line2?: string | null
+          city?: string
+          created_at?: string
+          full_name?: string
+          id?: string
+          is_default?: boolean
+          phone?: string
+          pincode?: string
+          state?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          address_id: string
+          amount: number
+          cashback_status: string
+          created_at: string
+          id: string
+          status: string
+          upi_id: string | null
+          user_id: string
+        }
+        Insert: {
+          address_id: string
+          amount?: number
+          cashback_status?: string
+          created_at?: string
+          id?: string
+          status?: string
+          upi_id?: string | null
+          user_id: string
+        }
+        Update: {
+          address_id?: string
+          amount?: number
+          cashback_status?: string
+          created_at?: string
+          id?: string
+          status?: string
+          upi_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_address_id_fkey"
+            columns: ["address_id"]
+            isOneToOne: false
+            referencedRelation: "addresses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
