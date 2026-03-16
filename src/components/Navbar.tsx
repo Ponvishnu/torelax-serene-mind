@@ -89,9 +89,16 @@ export default function Navbar() {
               <Link
                 to="/auth"
                 onClick={() => setOpen(false)}
-                className="mt-2 text-center px-5 py-3 rounded-lg bg-accent text-accent-foreground font-body font-semibold"
+                className="mt-2 text-center px-5 py-3 rounded-full border border-foreground/30 text-foreground font-body font-medium"
               >
-                Subscribe ₹2000
+                Login / Signup ✦
+              </Link>
+              <Link
+                to="/auth"
+                onClick={() => setOpen(false)}
+                className="text-center px-5 py-3 rounded-full bg-primary text-primary-foreground font-body font-semibold"
+              >
+                Begin Your Journey →
               </Link>
             </div>
           </motion.div>
