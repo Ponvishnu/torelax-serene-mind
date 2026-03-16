@@ -35,7 +35,10 @@ function AnimatedRoutes() {
           <Route path="/classes" element={<Classes />} />
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/address" element={<Address />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/confirmation" element={<Confirmation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>
