@@ -37,12 +37,18 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
           <Link
             to="/auth"
-            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-accent text-accent-foreground font-body font-semibold text-sm animate-pulse-ring"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-foreground/30 text-foreground font-body font-medium text-sm hover:border-primary hover:text-primary transition-colors"
           >
-            Subscribe ₹2000
+            Login / Signup <span className="text-primary">✦</span>
+          </Link>
+          <Link
+            to="/auth"
+            className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-primary text-primary-foreground font-body font-semibold text-sm hover:bg-primary/90 transition-colors"
+          >
+            Begin Your Journey <span>→</span>
           </Link>
         </div>
 
