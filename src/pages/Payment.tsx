@@ -30,8 +30,7 @@ export default function Payment() {
   }, [addressId]);
 
   const loadAddress = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) { navigate("/auth"); return; }
+    // Auth bypassed for testing
     if (!addressId) { navigate("/address"); return; }
 
     const { data } = await supabase
@@ -46,11 +45,11 @@ export default function Payment() {
   const handlePayment = async () => {
     setProcessing(true);
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return;
+    const userId = session?.user?.id || "00000000-0000-0000-0000-000000000000";
 
     // Create order
     const { data: order, error } = await supabase.from("orders").insert({
-      user_id: session.user.id,
+      user_id: userId,
       address_id: addressId!,
       amount: 2000,
       status: "completed",

@@ -12,12 +12,8 @@ export default function Auth() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    supabase.auth.onAuthStateChange((event, session) => {
-      if (session) navigate("/address");
-    });
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) navigate("/address");
-    });
+    // Auth bypassed for testing — anyone can proceed
+    navigate("/address");
   }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
