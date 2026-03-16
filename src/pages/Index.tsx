@@ -87,7 +87,7 @@ export default function Home() {
             className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link
-              to="/payment"
+              to="/auth"
               className="px-8 py-4 rounded-xl bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
             >
               Start Your Journey →
