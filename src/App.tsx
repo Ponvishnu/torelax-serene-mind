@@ -12,6 +12,9 @@ import Classes from "./pages/Classes";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import Payment from "./pages/Payment";
+import Auth from "./pages/Auth";
+import Address from "./pages/Address";
+import Confirmation from "./pages/Confirmation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
