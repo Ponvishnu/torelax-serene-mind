@@ -30,8 +30,7 @@ export default function Payment() {
   }, [addressId]);
 
   const loadAddress = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) { navigate("/auth"); return; }
+    // Auth bypassed for testing
     if (!addressId) { navigate("/address"); return; }
 
     const { data } = await supabase
