@@ -153,7 +153,7 @@ export default function Home() {
               <CountdownTimer />
             </div>
             <Link
-              to="/payment"
+              to="/auth"
               className="inline-flex px-8 py-4 rounded-xl bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
             >
               Start Your Relaxation Journey Today →
