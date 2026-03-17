@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Check, Brain, Moon, Heart } from "lucide-react";
+import { ChevronDown, Check, Brain, Moon, Heart, Users, Headphones, Star, Sparkles, Shield } from "lucide-react";
 import heroImg from "@/assets/hero-nature.jpg";
+import meditationImg from "@/assets/meditation-peace.jpg";
+import deepSleepImg from "@/assets/deep-sleep.jpg";
+import stressReliefImg from "@/assets/stress-relief.jpg";
+import emotionalImg from "@/assets/emotional-balance.jpg";
+import natureSoundsImg from "@/assets/nature-sounds.jpg";
+import subscribeImg from "@/assets/subscribe-offer.jpg";
 import AnimatedSection from "@/components/AnimatedSection";
 import CountdownTimer from "@/components/CountdownTimer";
 import CounterAnimation from "@/components/CounterAnimation";
@@ -34,40 +40,52 @@ const weeks = [
   { week: 4, title: "Focus & Clarity", desc: "Concentration & mental sharpness", emoji: "🧠" },
 ];
 
+const contentSections = [
+  {
+    img: deepSleepImg,
+    title: "Sleep Better Tonight",
+    desc: "Drift into deep, restful sleep with our curated collection of sleep stories, calming music, and guided meditations designed to quiet your racing mind.",
+    reverse: false,
+  },
+  {
+    img: stressReliefImg,
+    title: "Release Daily Stress",
+    desc: "Unwind from the pressures of everyday life with breathing exercises, body scans, and progressive muscle relaxation techniques guided by experts.",
+    reverse: true,
+  },
+  {
+    img: emotionalImg,
+    title: "Find Emotional Balance",
+    desc: "Build emotional resilience through mindfulness practices, gratitude journaling prompts, and guided sessions focused on self-compassion and positivity.",
+    reverse: false,
+  },
+  {
+    img: natureSoundsImg,
+    title: "Immerse in Nature Sounds",
+    desc: "Transport yourself to serene landscapes with high-quality nature soundscapes — from gentle rain to forest birdsong — perfect for focus, relaxation, or sleep.",
+    reverse: true,
+  },
+];
+
 export default function Home() {
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 600], [0, 150]);
 
   return (
     <div>
-      {/* HERO */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden grain-overlay">
-        <motion.div style={{ y: heroY }} className="absolute inset-0 -top-20">
-          <img src={heroImg} alt="Serene misty forest lake" className="w-full h-[120%] object-cover" loading="eager" />
-          <div className="absolute inset-0 bg-background/55" />
+      {/* HERO — Calm-inspired: shorter height, full visible image */}
+      <section className="relative h-[70vh] md:h-[80vh] flex items-end justify-center overflow-hidden">
+        <motion.div style={{ y: heroY }} className="absolute inset-0">
+          <img src={heroImg} alt="Serene misty forest lake" className="w-full h-full object-cover" loading="eager" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </motion.div>
 
-        {/* Breathing rings */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="absolute rounded-full border border-primary/20 animate-breathe"
-              style={{
-                width: `${200 + i * 100}px`,
-                height: `${200 + i * 100}px`,
-                animationDelay: `${i * 0.8}s`,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="relative z-10 text-center px-4 max-w-3xl">
+        <div className="relative z-10 text-center px-4 max-w-3xl pb-12 md:pb-20">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight"
+            className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
           >
             Relax Your Mind.{" "}
             <span className="text-primary">Recharge Your Life.</span>
@@ -76,25 +94,33 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-body text-lg md:text-xl text-muted mt-6 max-w-xl mx-auto"
+            className="font-body text-base md:text-lg text-muted mt-4 max-w-2xl mx-auto leading-relaxed"
           >
-            Calm your mind, sleep better, and regain emotional balance — in just 10 minutes a day.
+            In today's busy world, stress, anxiety, and sleep problems affect millions of people. ToRelax helps you calm your mind, sleep better, and regain emotional balance through guided meditation, relaxation audio, and mental wellness programs.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="font-body text-sm md:text-base text-primary font-medium mt-3"
+          >
+            Take just 10 minutes a day to relax your mind and transform your life.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
+            className="mt-6 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link
               to="/auth"
-              className="px-8 py-4 rounded-xl bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
+              className="px-8 py-4 rounded-full bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
             >
               Start Your Journey →
             </Link>
             <Link
               to="/classes"
-              className="px-8 py-4 rounded-xl border-2 border-primary/30 text-foreground font-body font-semibold text-lg hover:bg-primary/5 transition-colors"
+              className="px-8 py-4 rounded-full border-2 border-primary/30 text-foreground font-body font-semibold text-lg hover:bg-primary/5 transition-colors"
             >
               Explore Sessions
             </Link>
@@ -105,15 +131,42 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10"
         >
-          <ChevronDown className="w-8 h-8 text-primary/60 animate-bounce-down" />
+          <ChevronDown className="w-7 h-7 text-primary/60 animate-bounce-down" />
         </motion.div>
       </section>
 
-      {/* OFFER BANNER */}
-      <section className="bg-highlight py-12 md:py-16">
-        <div className="container mx-auto px-4 text-center">
+      {/* STATS — Card view */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              { icon: Users, target: 10000, suffix: "+", label: "Happy Users", color: "text-primary" },
+              { icon: Headphones, target: 20, suffix: "+", label: "Audio Sessions", color: "text-accent" },
+              { icon: Star, target: 49, suffix: "", label: "4.9 Star Rating", color: "text-primary" },
+            ].map((stat, i) => (
+              <AnimatedSection key={stat.label} delay={i * 0.1}>
+                <div className="bg-card rounded-2xl p-8 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-border/50">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <stat.icon className={`w-7 h-7 ${stat.color}`} />
+                  </div>
+                  <CounterAnimation target={stat.target} suffix={stat.suffix} />
+                  <p className="font-body text-muted mt-2">{stat.label}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OFFER BANNER with matching image */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={subscribeImg} alt="Cozy relaxation setup" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-background/85" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 py-16 md:py-20 text-center">
           <AnimatedSection>
             <span className="inline-block bg-accent/20 text-accent font-accent font-bold text-sm px-4 py-1.5 rounded-full mb-4 animate-blink-glow">
               💰 LIMITED TIME OFFER
@@ -154,7 +207,7 @@ export default function Home() {
             </div>
             <Link
               to="/auth"
-              className="inline-flex px-8 py-4 rounded-xl bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
+              className="inline-flex px-8 py-4 rounded-full bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
             >
               Start Your Relaxation Journey Today →
             </Link>
@@ -162,58 +215,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="py-16 bg-card">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <span className="text-3xl mb-2 block">🧘</span>
-              <CounterAnimation target={10000} suffix="+" />
-              <p className="font-body text-muted mt-2">Users</p>
-            </div>
-            <div>
-              <span className="text-3xl mb-2 block">🎧</span>
-              <CounterAnimation target={20} suffix="+" />
-              <p className="font-body text-muted mt-2">Sessions</p>
-            </div>
-            <div>
-              <span className="text-3xl mb-2 block">⭐</span>
-              <CounterAnimation target={49} suffix="" />
-              <p className="font-body text-muted mt-2">
-                <span className="text-primary font-display text-lg">4.9</span> Rating
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURES */}
+      {/* HOW IT WORKS */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <AnimatedSection>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
               How It Works
             </h2>
+            <p className="font-body text-muted text-center max-w-xl mx-auto mb-12">
+              Simple steps to begin your wellness journey
+            </p>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
-              { icon: Brain, title: "Guided Meditation", desc: "Calm your nervous system with expert-led sessions designed for Indian lifestyles." },
-              { icon: Moon, title: "Deep Sleep Audio", desc: "Fall asleep faster and wake refreshed with soothing sleep stories and sounds." },
-              { icon: Heart, title: "Emotional Balance", desc: "Reduce anxiety and build positivity through mindfulness and gratitude practices." },
+              { icon: Brain, title: "Guided Meditation", desc: "Calm your nervous system with expert-led sessions designed for Indian lifestyles.", img: meditationImg },
+              { icon: Moon, title: "Deep Sleep Audio", desc: "Fall asleep faster and wake refreshed with soothing sleep stories and sounds.", img: deepSleepImg },
+              { icon: Heart, title: "Emotional Balance", desc: "Reduce anxiety and build positivity through mindfulness and gratitude practices.", img: emotionalImg },
             ].map((f, i) => (
               <AnimatedSection key={f.title} delay={i * 0.15}>
-                <div className="bg-card rounded-2xl p-8 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-border/50">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
-                    <f.icon className="w-7 h-7 text-primary" />
+                <div className="bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-border/50">
+                  <img src={f.img} alt={f.title} className="w-full h-40 object-cover" loading="lazy" />
+                  <div className="p-6 text-center">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 -mt-10 relative z-10 border-4 border-card">
+                      <f.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-foreground mb-3">{f.title}</h3>
+                    <p className="font-body text-sm text-muted">{f.desc}</p>
                   </div>
-                  <h3 className="font-display text-xl font-semibold text-foreground mb-3">{f.title}</h3>
-                  <p className="font-body text-sm text-muted">{f.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
+
+      {/* CONTENT SECTIONS — alternating image + text like Calm */}
+      {contentSections.map((sec, i) => (
+        <section key={sec.title} className={`py-16 ${i % 2 === 0 ? "bg-card" : "bg-background"}`}>
+          <div className="container mx-auto px-4">
+            <div className={`flex flex-col ${sec.reverse ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-10 max-w-5xl mx-auto`}>
+              <AnimatedSection className="md:w-1/2">
+                <img src={sec.img} alt={sec.title} className="w-full rounded-2xl shadow-md" loading="lazy" />
+              </AnimatedSection>
+              <AnimatedSection delay={0.15} className="md:w-1/2">
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">{sec.title}</h3>
+                <p className="font-body text-muted leading-relaxed">{sec.desc}</p>
+                <Link
+                  to="/classes"
+                  className="inline-flex mt-6 px-6 py-3 rounded-full bg-primary text-primary-foreground font-body font-medium text-sm hover:opacity-90 transition-opacity"
+                >
+                  Explore Sessions
+                </Link>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
+      ))}
 
       {/* PROGRAM STRUCTURE */}
       <section className="py-20 bg-card">
@@ -259,8 +316,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-20 bg-background overflow-hidden">
+      {/* WHY TORELAX */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <AnimatedSection>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
+              Why Choose ToRelax?
+            </h2>
+            <p className="font-body text-muted text-center max-w-xl mx-auto mb-12">
+              Trusted by thousands across India for mental wellness
+            </p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              { icon: Sparkles, title: "Expert-Led Content", desc: "Sessions designed by certified meditation and mindfulness experts." },
+              { icon: Shield, title: "100% Private & Secure", desc: "Your data is safe. We never share your information with third parties." },
+              { icon: Heart, title: "Personalized for You", desc: "Programs tailored for Indian lifestyles, stress patterns, and daily routines." },
+            ].map((item, i) => (
+              <AnimatedSection key={item.title} delay={i * 0.1}>
+                <div className="bg-card rounded-2xl p-8 text-center shadow-sm border border-border/50 hover:shadow-md transition-shadow">
+                  <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                    <item.icon className="w-7 h-7 text-accent" />
+                  </div>
+                  <h3 className="font-display text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                  <p className="font-body text-sm text-muted">{item.desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS — horizontal scrolling */}
+      <section className="py-20 bg-card overflow-hidden">
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
@@ -268,11 +356,10 @@ export default function Home() {
             </h2>
           </AnimatedSection>
 
-          {/* Desktop grid */}
-          <div className="hidden md:grid grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {testimonials.map((t, i) => (
-              <AnimatedSection key={i} delay={i * 0.05}>
-                <div className="bg-card rounded-xl p-6 shadow-sm border border-border/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div className="relative">
+            <div className="flex animate-marquee w-[200%]">
+              {[...testimonials, ...testimonials].map((t, i) => (
+                <div key={i} className="w-80 flex-shrink-0 mx-3 bg-background rounded-2xl p-6 shadow-sm border border-border/50">
                   <div className="flex gap-0.5 mb-3">
                     {[...Array(5)].map((_, j) => (
                       <span key={j} className="text-accent text-sm">⭐</span>
@@ -280,7 +367,7 @@ export default function Home() {
                   </div>
                   <p className="font-display text-sm italic text-foreground/80 mb-4">"{t.quote}"</p>
                   <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-full ${t.color} flex items-center justify-center text-accent-foreground font-body text-xs font-bold`}>
+                    <div className={`w-9 h-9 rounded-full ${t.color} flex items-center justify-center text-accent-foreground font-body text-xs font-bold`}>
                       {t.name[0]}
                     </div>
                     <div>
@@ -288,23 +375,6 @@ export default function Home() {
                       <p className="font-body text-xs text-muted">{t.city}</p>
                     </div>
                   </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          {/* Mobile marquee */}
-          <div className="md:hidden relative">
-            <div className="flex animate-marquee w-[200%]">
-              {[...testimonials, ...testimonials].map((t, i) => (
-                <div key={i} className="w-72 flex-shrink-0 mx-3 bg-card rounded-xl p-5 shadow-sm border border-border/50">
-                  <div className="flex gap-0.5 mb-2">
-                    {[...Array(5)].map((_, j) => (
-                      <span key={j} className="text-accent text-xs">⭐</span>
-                    ))}
-                  </div>
-                  <p className="font-display text-sm italic text-foreground/80 mb-3">"{t.quote}"</p>
-                  <p className="font-body text-xs font-medium text-foreground">{t.name} <span className="text-muted">• {t.city}</span></p>
                 </div>
               ))}
             </div>
@@ -321,7 +391,7 @@ export default function Home() {
             </h2>
             <Link
               to="/auth"
-              className="inline-flex px-10 py-4 rounded-xl bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
+              className="inline-flex px-10 py-4 rounded-full bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
             >
               Subscribe Now — ₹2000
             </Link>
