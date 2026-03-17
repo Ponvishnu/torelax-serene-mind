@@ -73,19 +73,19 @@ export default function Home() {
 
   return (
     <div>
-      {/* HERO — Calm-inspired: shorter height, full visible image */}
-      <section className="relative h-[70vh] md:h-[80vh] flex items-end justify-center overflow-hidden">
+      {/* HERO */}
+      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <img src={heroImg} alt="Serene misty forest lake" className="w-full h-full object-cover" loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
         </motion.div>
 
-        <div className="relative z-10 text-center px-4 max-w-3xl pb-12 md:pb-20">
+        <div className="relative z-10 text-center px-6 sm:px-8 max-w-3xl py-16 md:py-24">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
+            className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
           >
             Relax Your Mind.{" "}
             <span className="text-primary">Recharge Your Life.</span>
@@ -94,7 +94,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-body text-base md:text-lg text-muted mt-4 max-w-2xl mx-auto leading-relaxed"
+            className="font-body text-sm sm:text-base md:text-lg text-muted mt-4 max-w-2xl mx-auto leading-relaxed"
           >
             In today's busy world, stress, anxiety, and sleep problems affect millions of people. ToRelax helps you calm your mind, sleep better, and regain emotional balance through guided meditation, relaxation audio, and mental wellness programs.
           </motion.p>
@@ -102,7 +102,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-body text-sm md:text-base text-primary font-medium mt-3"
+            className="font-body text-xs sm:text-sm md:text-base text-primary font-medium mt-3"
           >
             Take just 10 minutes a day to relax your mind and transform your life.
           </motion.p>
@@ -110,17 +110,17 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-6 flex flex-col sm:flex-row gap-4 justify-center"
+            className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
           >
             <Link
               to="/auth"
-              className="px-8 py-4 rounded-full bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
+              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-accent text-accent-foreground font-body font-semibold text-base sm:text-lg animate-pulse-ring"
             >
               Start Your Journey →
             </Link>
             <Link
               to="/classes"
-              className="px-8 py-4 rounded-full border-2 border-primary/30 text-foreground font-body font-semibold text-lg hover:bg-primary/5 transition-colors"
+              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-primary/30 text-foreground font-body font-semibold text-base sm:text-lg hover:bg-primary/5 transition-colors"
             >
               Explore Sessions
             </Link>
@@ -160,58 +160,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* OFFER BANNER with matching image */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={subscribeImg} alt="Cozy relaxation setup" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-background/85" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 py-16 md:py-20 text-center">
-          <AnimatedSection>
-            <span className="inline-block bg-accent/20 text-accent font-accent font-bold text-sm px-4 py-1.5 rounded-full mb-4 animate-blink-glow">
-              💰 LIMITED TIME OFFER
-            </span>
-            <h2 className="font-display text-2xl md:text-4xl font-bold text-foreground mb-3">
-              Subscribe ₹2000 <span className="text-muted font-body text-lg">(Incl. GST)</span>
-            </h2>
-            <p className="font-body text-lg text-foreground/80 mb-2">
-              Get <span className="font-bold text-accent">₹1000 Instant Cashback</span> as Amazon Gift Voucher
-            </p>
-            <p className="font-body text-sm text-muted animate-blink-glow mb-8">
-              Payment receipt sent instantly to your email for corporate reimbursement
-            </p>
-          </AnimatedSection>
+      {/* OFFER BANNER — image left, content right */}
+      <section className="py-16 md:py-20 bg-card">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
+            <AnimatedSection className="md:w-1/2">
+              <img src={subscribeImg} alt="Cozy relaxation setup" className="w-full rounded-2xl shadow-md" loading="lazy" />
+            </AnimatedSection>
+            <AnimatedSection delay={0.15} className="md:w-1/2">
+              <span className="inline-block bg-accent/20 text-accent font-accent font-bold text-sm px-4 py-1.5 rounded-full mb-4 animate-blink-glow">
+                💰 LIMITED TIME OFFER
+              </span>
+              <h2 className="font-display text-2xl md:text-4xl font-bold text-foreground mb-3">
+                Subscribe ₹2000 <span className="text-muted font-body text-lg">(Incl. GST)</span>
+              </h2>
+              <p className="font-body text-lg text-foreground/80 mb-2">
+                Get <span className="font-bold text-accent">₹1000 Instant Cashback</span> as Amazon Gift Voucher
+              </p>
+              <p className="font-body text-sm text-muted animate-blink-glow mb-6">
+                Payment receipt sent instantly to your email for corporate reimbursement
+              </p>
 
-          <AnimatedSection delay={0.2}>
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-10 max-w-lg mx-auto">
-              {offerFeatures.map((f, i) => (
-                <motion.div
-                  key={f}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 * i }}
-                  className="flex items-center gap-2 font-body text-sm text-foreground/80"
-                >
-                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                  {f}
-                </motion.div>
-              ))}
-            </div>
-          </AnimatedSection>
+              <div className="flex flex-col gap-2 mb-8">
+                {offerFeatures.map((f, i) => (
+                  <motion.div
+                    key={f}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 * i }}
+                    className="flex items-center gap-2 font-body text-sm text-foreground/80"
+                  >
+                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                    {f}
+                  </motion.div>
+                ))}
+              </div>
 
-          <AnimatedSection delay={0.3}>
-            <div className="mb-8">
-              <p className="font-accent text-sm text-muted mb-3 uppercase tracking-wider">Offer ends in</p>
-              <CountdownTimer />
-            </div>
-            <Link
-              to="/auth"
-              className="inline-flex px-8 py-4 rounded-full bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
-            >
-              Start Your Relaxation Journey Today →
-            </Link>
-          </AnimatedSection>
+              <div className="mb-6">
+                <p className="font-accent text-sm text-muted mb-3 uppercase tracking-wider">Offer ends in</p>
+                <CountdownTimer />
+              </div>
+              <Link
+                to="/auth"
+                className="inline-flex px-8 py-4 rounded-full bg-accent text-accent-foreground font-body font-semibold text-lg animate-pulse-ring"
+              >
+                Start Your Relaxation Journey Today →
+              </Link>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
